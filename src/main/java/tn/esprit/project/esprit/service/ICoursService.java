@@ -9,8 +9,11 @@ interface ICoursService {
 
     Cours add(Cours c);
 
-    void update(Cours c , Long id);
-    List<Cours> getAll();
+   // Cours update(Cours c , Long id);
+
+     Cours update(Cours newCourse) ;
+
+        List<Cours> getAll();
 
     Cours getById(Long id);
     void remove(Long id);

@@ -37,9 +37,8 @@ public class CoursController {
     }
 
     @PutMapping("/cours/update/{id}")
-    public void updateCours(@PathVariable Long id,
-                                  @org.springframework.web.bind.annotation.RequestBody Cours cours) {
-         iCoursService.update(cours , id);
+    public void updateCours(@org.springframework.web.bind.annotation.RequestBody Cours cours) {
+         iCoursService.update(cours);
     }
 
 

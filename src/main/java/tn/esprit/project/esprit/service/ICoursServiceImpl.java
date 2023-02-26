@@ -28,16 +28,8 @@ private CoursRepository courRepo ;
 
     //..???????MCH SUR VOID!!????
     @Override
-     public void update(Cours c, Long id) {
-        Cours coursFromDb = courRepo.findById(id).orElse(null);
-        coursFromDb.setPrix(coursFromDb.getPrix());
-        coursFromDb.setNumCours(coursFromDb.getNumCours());
-        coursFromDb.setNiveau(coursFromDb.getNiveau());
-        coursFromDb.setCreneau(coursFromDb.getCreneau());
-        coursFromDb.setInscriptions(coursFromDb.getInscriptions());
-        coursFromDb.setSupport(coursFromDb.getSupport());
-        coursFromDb.setId(coursFromDb.getId());
-
+    public Cours update(Cours newCourse) {
+        return courRepo.save(newCourse);
     }
 
     @Override
