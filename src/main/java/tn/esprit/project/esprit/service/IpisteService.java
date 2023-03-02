@@ -13,4 +13,6 @@ public interface IpisteService {
 
     Piste getById(Long id);
     void removePiste(Long id);
+     Piste assignPisteToskieur(Long numSkieur, Long numPiste);
+
 }

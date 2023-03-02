@@ -1,20 +1,29 @@
 package tn.esprit.project.esprit.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import tn.esprit.project.esprit.entity.Cours;
 import tn.esprit.project.esprit.entity.Inscription;
+import tn.esprit.project.esprit.entity.Piste;
 import tn.esprit.project.esprit.entity.Skieur;
+import tn.esprit.project.esprit.repository.PisteRepository;
 import tn.esprit.project.esprit.repository.SkieurRepository;
 
 import java.util.List;
-
+import java.util.Optional;
+//@AllArgsConstructor tnjm thot hedhi wala @autowited
 @Service
 public class ISkieurImpl implements ISkieurService{
 
 
     @Autowired
     SkieurRepository skieurRepository;
+
+    @Autowired
+    PisteRepository pisteRepo;
+
     @Override
     public void addSkieur(Skieur s) {
         skieurRepository.save(s);
@@ -49,4 +58,27 @@ public class ISkieurImpl implements ISkieurService{
     public void removeSkieur(Long id) {
         skieurRepository.deleteById(id);
     }
+
+    public Skieur assignSkieurToPiste(Long numSkieur, Long numPiste)
+    {
+        //recupration des objets
+        Skieur skieur = skieurRepository.findById(numSkieur).orElse(null);
+        Assert.notNull(skieur,"skieur not found");
+        Piste piste = pisteRepo.findById(numPiste).orElse(null);
+        Assert.notNull(piste,"piste not found");
+
+
+         List<Piste> pistes = skieur.getPistes(); //1ere methode
+           pistes.add(piste);
+           skieur.setPistes(pistes);
+           skieur.getPistes().add(piste);
+
+        //skieur.getPistes().add(piste);       //2eme methode
+         return skieurRepository.save(skieur);
+
 }
+
+    }
+
+
+

@@ -1,5 +1,6 @@
 package tn.esprit.project.esprit.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class Piste  implements Serializable {
     @Enumerated(EnumType.STRING)
     private Couleur couleur;
 
-   @ManyToMany
+    @JsonIgnore //biderctionel manytomany onetoone waketha nsakr l bouucle mtei b jsonignore f jiha menhom
+    @ManyToMany
     private List<Skieur> skieurs;
 }

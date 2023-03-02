@@ -2,9 +2,12 @@ package tn.esprit.project.esprit.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import tn.esprit.project.esprit.entity.Inscription;
 import tn.esprit.project.esprit.entity.Piste;
+import tn.esprit.project.esprit.entity.Skieur;
 import tn.esprit.project.esprit.repository.PisteRepository;
+import tn.esprit.project.esprit.repository.SkieurRepository;
 
 import java.util.List;
 
@@ -13,6 +16,9 @@ public class IpisteImpl implements  IpisteService{
 
     @Autowired // pour injecter les dependances
     PisteRepository pisteRepository;
+
+    @Autowired
+    SkieurRepository skieurRepository;
 
     @Override
     public void addPiste(Piste piste) {
@@ -46,4 +52,29 @@ public class IpisteImpl implements  IpisteService{
     public void removePiste(Long id) {
  pisteRepository.deleteById(id);
     }
+
+    public Piste assignPisteToskieur(Long numSkieur, Long numPiste)
+    {
+        //recupration des objets
+        Skieur skieur = skieurRepository.findById(numSkieur).orElse(null);
+        Assert.notNull(skieur,"skieur not found");
+        Piste piste = pisteRepository.findById(numPiste).orElse(null);
+        Assert.notNull(piste,"piste not found");
+
+
+        List<Skieur> skieurs = piste.getSkieurs(); //1ere methode
+        skieurs.add(skieur);
+        piste.setSkieurs(skieurs);
+        piste.getSkieurs().add(skieur);
+
+        //skieur.getPistes().add(piste);       //2eme methode
+        return pisteRepository.save(piste);
+
+    }
+
+
 }
+
+
+
+
