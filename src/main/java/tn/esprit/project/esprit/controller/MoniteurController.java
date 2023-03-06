@@ -38,4 +38,11 @@ public class MoniteurController {
         iMoniteurService.updatMoniteur(moniteur , id);
     }
 
+    @PutMapping("/moniteur/assign/{numCourse}")
+    public Moniteur addInstructorAndAssignToCourse(Moniteur moniteur, Long numCourse)
+    {
+       return iMoniteurService.addInstructorAndAssignToCourse(moniteur,numCourse);
+
+    }
+
 }

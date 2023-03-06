@@ -1,6 +1,7 @@
 package tn.esprit.project.esprit.service;
 
 import tn.esprit.project.esprit.entity.Skieur;
+import tn.esprit.project.esprit.entity.TypeAbonnement;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface ISkieurService {
     void removeSkieur(Long id);
 
     Skieur assignSkieurToPiste(Long numSkieur, Long numPiste);
+    public List<Skieur> retrieveSkieurBySubscriptionType(TypeAbonnement typeAbonnement);
+
+
 }

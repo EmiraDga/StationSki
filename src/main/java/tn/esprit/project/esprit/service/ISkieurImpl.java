@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import tn.esprit.project.esprit.entity.Cours;
-import tn.esprit.project.esprit.entity.Inscription;
-import tn.esprit.project.esprit.entity.Piste;
-import tn.esprit.project.esprit.entity.Skieur;
+import tn.esprit.project.esprit.entity.*;
 import tn.esprit.project.esprit.repository.PisteRepository;
 import tn.esprit.project.esprit.repository.SkieurRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 //@AllArgsConstructor tnjm thot hedhi wala @autowited
@@ -78,7 +76,17 @@ public class ISkieurImpl implements ISkieurService{
 
 }
 
+public List<Skieur> retrieveSkieurBySubscriptionType(TypeAbonnement typeAbonnement)
+{
+
+return skieurRepository.findByAbonnementTypeAbon(typeAbonnement);
+
+}
+
     }
+
+
+
 
 
 

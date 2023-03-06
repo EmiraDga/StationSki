@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.project.esprit.entity.Piste;
 import tn.esprit.project.esprit.entity.Skieur;
+import tn.esprit.project.esprit.entity.TypeAbonnement;
 import tn.esprit.project.esprit.service.ISkieurService;
 import tn.esprit.project.esprit.service.IpisteService;
 
@@ -39,6 +40,15 @@ public class SkieurController {
     @PutMapping("/skieur/update/{id}")
     public void updateSkieur(@org.springframework.web.bind.annotation.RequestBody Skieur skieur , @PathVariable Long id) {
         iSkieurService.updateSkieur(skieur , id);
+    }
+
+
+
+    @GetMapping("/skieur/getSkieurSubs/typeAbonnement")
+    public List<Skieur> retrieveSkieurBySubscriptionType(TypeAbonnement typeAbonnement)
+    {
+        return  iSkieurService.retrieveSkieurBySubscriptionType(typeAbonnement);
+
     }
 
 }
