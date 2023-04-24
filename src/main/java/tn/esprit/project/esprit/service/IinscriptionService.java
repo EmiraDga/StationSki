@@ -15,4 +15,7 @@ public interface IinscriptionService {
     void removeInscription(Long id);
 
 
+    
+    
+    
 }

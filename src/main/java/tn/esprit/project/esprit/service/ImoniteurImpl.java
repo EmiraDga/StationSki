@@ -6,12 +6,14 @@ import org.springframework.util.Assert;
 import tn.esprit.project.esprit.entity.Cours;
 import tn.esprit.project.esprit.entity.Moniteur;
 import tn.esprit.project.esprit.entity.Skieur;
+import tn.esprit.project.esprit.entity.Support;
 import tn.esprit.project.esprit.repository.CoursRepository;
 import tn.esprit.project.esprit.repository.MoniteurRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ImoniteurImpl implements IMoniteurService{
@@ -76,5 +78,11 @@ public class ImoniteurImpl implements IMoniteurService{
         moniteur1.getCours().add(cours);
 
         return moniteurRepository.save(moniteur);
+    }
+
+    public Map<Cours,Integer> search (Long numInscri, Support support)
+    {
+        return getById(numInscri).getCoursList().stream().filter()
+
     }
 }

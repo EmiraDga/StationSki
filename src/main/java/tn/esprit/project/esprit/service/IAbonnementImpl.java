@@ -6,6 +6,7 @@ import tn.esprit.project.esprit.entity.Abonnement;
 import tn.esprit.project.esprit.entity.Cours;
 import tn.esprit.project.esprit.repository.AbonnementRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -44,4 +45,14 @@ return  abonnement1;
     public Abonnement getById(Long id) {
         return abonRepo.findById(id).orElse(null);
     }
+    
+    
+  //On souhaite afficher les abonnements qui ont été créés entre deux dates données.
+    List<Abonnement> retrieveSubscriptionsByDates(LocalDate startDate,LocalDate endDate);
+    {
+
+
+
+    }
+    
 }

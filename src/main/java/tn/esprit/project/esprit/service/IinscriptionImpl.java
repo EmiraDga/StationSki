@@ -42,4 +42,7 @@ public class IinscriptionImpl implements  IinscriptionService{
     public void removeInscription(Long id) {
         inscriptionRpository.deleteById(id);
     }
+    
+    
+    
 }
